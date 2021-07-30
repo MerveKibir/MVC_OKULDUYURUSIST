@@ -1,0 +1,128 @@
+﻿@model DataModel.Duyuru
+
+@{
+    ViewBag.Title = "DuyuruyuEkle";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<style>
+    .banner {
+        margin-left: 15%;
+        width: 80%;
+        height: 220px;
+    }
+
+        .banner .kutu {
+            width: 26%;
+            height: 150px;
+            float: left;
+            margin-left: 17px;
+            margin-top: 20px;
+        }
+</style>
+<div class="banner "  >
+
+    <div class="kutu" style="background-color:lightskyblue;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller1 = new MerveKibir.Controllers.AnaController();
+                @controller1.ServistenSayiGetir()[0];
+            }
+        </div>
+        <div style="float:right; margin-top:100px;"><H5>Tüm Duyurular</H5></div>
+    </div>
+    <div class="kutu" style="background-color:indianred;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller2 = new MerveKibir.Controllers.AnaController();
+                @controller2.ServistenSayiGetir()[1];
+            }
+        </div>
+        <div style="float:right; margin-top:100px;"><H5>Gönderilmiş Duyurular</H5></div>
+    </div>
+    <div class="kutu" style="background-color:darkseagreen;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller3 = new MerveKibir.Controllers.AnaController();
+                @controller3.ServistenSayiGetir()[2];
+            }
+        </div>
+        <div style="float:right; margin-top:50px;"><H5>Son Bir Yıl İçindeki Duyurular</H5></div>
+    </div>
+</div>
+<div class="arama">
+    <input id="Text1" type="search" style="width: 64%; height: 30px; margin: 17px;" placeholder="Başlık/ Metin/ Alıcılar Alanlarında aramayı başlatmak için enter tuşuna basınız." />
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="width:77%; margin-left:400px;">
+        <h4>Duyuru Ekle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label style="font-size:larger;">BAŞLIK</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Baslik, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Baslik, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            <label style="font-size:larger;">METİN</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Metin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Metin, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            <label style="font-size:larger;">METİN HTML</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MetinHtml, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MetinHtml, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+
+        <div class="form-group">
+            <label style="font-size:larger;">BAŞLIK HTML</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BaslikHtml, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BaslikHtml, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group">
+            <label style="font-size:larger;">OLUŞTURMA TARİHİ</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.OlusturmaTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.OlusturmaTarihi, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group">
+            <label style="font-size:larger;">GÖNDERİLDİ DURUMU SEÇİNİZ</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GonderildiMi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GonderildiMi, "", new { @class = "text-danger" })
+            </div>
+        </div><br />
+        <div class="form-group">
+            <label style="font-size:larger;">GÖNDERME TARİHİ</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GondermeTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GondermeTarihi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="KAYDET" class="btn btn-primary" style="background-color:mediumseagreen; border-color:mediumseagreen;" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

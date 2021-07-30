@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/CSS/Site.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        @Html.Partial("~/Views/Ana/Partials/_baslik.cshtml")
+    </div>
+
+    <div>
+        <div>
+            @Html.Partial("~/Views/Ana/Partials/_menu.cshtml")
+        </div>
+        @RenderBody()
+    </div>
+</body>
+</html>

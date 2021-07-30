@@ -1,0 +1,85 @@
+﻿
+@model List<DataModel.Duyuru>
+@{
+    ViewBag.Title = "ServistenGetir";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+<style>
+    .banner {
+        margin-left: 15%;
+        width: 80%;
+        height: 220px;
+    }
+
+        .banner .kutu {
+            width: 26%;
+            height: 150px;
+            float: left;
+            margin-left: 17px;
+            margin-top: 20px;
+        }
+</style>
+<div class="banner">
+
+    <div class="kutu" style="background-color:lightskyblue;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller1 = new MerveKibir.Controllers.AnaController();
+                @controller1.ServistenSayiGetir()[0];
+            }
+        </div>
+        <div style="float:right; margin-top:100px;"><H5>Tüm Duyurular</H5></div>
+    </div>
+    <div class="kutu" style="background-color:indianred;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller2 = new MerveKibir.Controllers.AnaController();
+                @controller2.ServistenSayiGetir()[1];
+            }
+        </div>
+        <div style="float:right; margin-top:100px;"><H5>Gönderilmiş Duyurular</H5></div>
+    </div>
+    <div class="kutu" style="background-color:darkseagreen;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller3 = new MerveKibir.Controllers.AnaController();
+                @controller3.ServistenSayiGetir()[2];
+            }
+        </div>
+        <div style="float:right; margin-top:50px;"><H5>Son Bir Yıl İçindeki Duyurular</H5></div>
+    </div>
+</div>
+<div class="arama">
+    <input id="Text1" type="search" style="width: 64%; height: 30px; margin: 17px;" placeholder="Başlık/ Metin/ Alıcılar Alanlarında aramayı başlatmak için enter tuşuna basınız." />
+</div>
+
+<div class="container" style="margin-left:400px;">
+    <h2>Servisten Duyuru Getir</h2>
+    <hr />
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Baslik</th>
+                <th>Metin</th>
+                <th>Gonderme Tarihi</th>
+                <th>Oluşturma Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var eleman in Model)
+            {
+                <tr>
+                    <td>@eleman.No</td>
+                    <td>@eleman.Baslik</td>
+                    <td>@eleman.Metin</td>
+                    <td>@eleman.GondermeTarihi</td>
+                    <td>@eleman.OlusturmaTarihi</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

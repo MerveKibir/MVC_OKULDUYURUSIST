@@ -1,0 +1,80 @@
+﻿@model DataModel.Duyuru
+@{
+    ViewBag.Title = "KullaniciEkle";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+
+<style>
+    .banner {
+        margin-left: 15%;
+        width: 80%;
+        height: 220px;
+    }
+
+        .banner .kutu {
+            width: 26%;
+            height: 150px;
+            float: left;
+            margin-left: 17px;
+            margin-top: 20px;
+        }
+</style>
+<div class="banner ">
+
+    <div class="kutu" style="background-color:lightskyblue;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller1 = new MerveKibir.Controllers.AnaController();
+                @controller1.ServistenSayiGetir()[0];
+            }
+        </div>
+        <div style="float:right; margin-top:100px;"><H5>Tüm Duyurular</H5></div>
+    </div>
+    <div class="kutu" style="background-color:indianred;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller2 = new MerveKibir.Controllers.AnaController();
+                @controller2.ServistenSayiGetir()[1];
+            }
+        </div>
+        <div style="float:right; margin-top:100px;"><H5>Gönderilmiş Duyurular</H5></div>
+    </div>
+    <div class="kutu" style="background-color:darkseagreen;">
+        <img src="~/Content/loudspeaker.png" style=" opacity: 0.1; float: left; width: 30%; height: 120px; margin-top:5px; " />
+        <div class="col-sm-1" style="color:black; font-size:35px; float:right;">
+            @{MerveKibir.Controllers.AnaController controller3 = new MerveKibir.Controllers.AnaController();
+                @controller3.ServistenSayiGetir()[2];
+            }
+        </div>
+        <div style="float:right; margin-top:50px;"><H5>Son Bir Yıl İçindeki Duyurular</H5></div>
+    </div>
+</div>
+<div class="arama">
+    <input id="Text1" type="search" style="width: 64%; height: 30px; margin: 17px;" placeholder="Başlık/ Metin/ Alıcılar Alanlarında aramayı başlatmak için enter tuşuna basınız." />
+</div>
+
+<div class="container-lg" >
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h4>Kullanıcı Ekle</h4>
+            <hr />
+            <form action="/ana/KullaniciEkle" method="post" style="margin-left:70px;">
+                <label style="font-size:larger;">AD</label>
+                <input type="text" class="form-control" name="Ad" placeholder="Kullanıcının adını giriniz.." /><br />
+                <label style="font-size:larger;">SOYAD</label>
+                <input type="text" class="form-control" name="Soyad" placeholder="Kullanıcının soyadını giriniz.." /><br />
+                <label style="font-size:larger;">TC KİMLİK</label>
+                <input type="text" class="form-control" name="TcKimlikNo" placeholder="Tc Kimlik no giriniz.." /><br />
+                <label style="font-size:larger;">DOĞUM GÜNÜ</label>
+                <input type="date" class="form-control" name="DogumTarihi" /><br />
+                <label style="font-size:larger;">KULLANICI ADI</label>
+                <input type="text" class="form-control" name="KullaniciAdi" placeholder="Kullanıcı adını giriniz.." /><br />
+                <label style="font-size:larger;">PAROLA</label>
+                <input type="text" class="form-control" name="Parola" placeholder="Kullanıcının parolasını giriniz.." /><br />
+                <input class="btn btn-success" style="background-color:mediumseagreen; border-color:mediumseagreen;" type="submit" value="Kaydet" />
+            </form>
+        </div>
+
+    </div>
+</div>
